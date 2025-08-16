@@ -60,6 +60,7 @@ class User(BaseModel):
     email: EmailStr
     full_name: str
     role: str
+    hashed_password: str
     license_number: Optional[str] = None
     specialty: Optional[str] = None
     date_of_birth: Optional[str] = None
