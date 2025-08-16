@@ -128,10 +128,15 @@ const AuthPage = () => {
   };
 
   const handleRoleChange = (value) => {
-    setFormData({
-      ...formData,
-      role: value
-    });
+    setFormData(prevData => ({
+      ...prevData,
+      role: value,
+      // Reset role-specific fields when role changes
+      license_number: value === 'clinician' ? prevData.license_number : '',
+      specialty: value === 'clinician' ? prevData.specialty : '',
+      date_of_birth: value === 'patient' ? prevData.date_of_birth : '',
+      phone: value === 'patient' ? prevData.phone : ''
+    }));
   };
 
   const handleSubmit = async (e) => {
